@@ -61,3 +61,31 @@ darkButton.addEventListener('click', function () {
         }
     }
 });
+
+//Abre cada article
+
+// Inicializar la página ocultando todos los artículos
+window.onload = function() {
+    const initialArticles = document.querySelectorAll('#estudios article');
+    initialArticles.forEach((article) => {
+        article.classList.add('hidden');
+    });
+};
+
+// Eventos de click para cada botón
+const buttons = document.querySelectorAll('button[data-id]');
+const articles = document.querySelectorAll('article[data-id]');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const id = button.getAttribute('data-id');
+
+        articles.forEach(article => {
+            if (article.getAttribute('data-id') === id) {
+                article.classList.remove('hidden');
+            } else {
+                article.classList.add('hidden');
+            }
+        });
+    });
+});
